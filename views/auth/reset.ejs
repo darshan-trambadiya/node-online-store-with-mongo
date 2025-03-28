@@ -1,0 +1,45 @@
+<%- include('../includes/head.ejs') %>
+
+    <%- include('../includes/breadcrumbs.ejs', {currentPage: {title: 'Reset Password' , url: '/reset' } }) %>
+
+        <!-- Shop Login -->
+        <section class="shop login section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 offset-lg-3 col-12">
+                        <div class="login-form">
+                            <h2>Reset Password</h2>
+
+                            <% if (errorMessage) { %>
+                                <div id="flashMessage" class="row alert alert-danger" role="alert">
+                                    <%= errorMessage %>
+                                </div>
+                                <script src="/js/hide-flash-message.js"></script>
+                                <% } %>
+
+                                    <!-- Form -->
+                                    <form class="form" method="post" action="/reset">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div class="form-group">
+                                                    <label>Your Email<span>*</span></label>
+                                                    <input id="email" type="email" name="email" placeholder="">
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="form-group login-btn">
+                                                    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                                                    <button class="btn" type="submit">Reset Password</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                    <!--/ End Form -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--/ End Login -->
+
+        <%- include('../includes/end.ejs') %>

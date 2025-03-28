@@ -1,0 +1,62 @@
+<%- include('../includes/head.ejs') %>
+
+    <%- include('../includes/breadcrumbs.ejs', {currentPage: {title: 'Login' , url: '/login' } }) %>
+
+        <!-- Shop Login -->
+        <section class="shop login section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 offset-lg-3 col-12">
+                        <div class="login-form">
+                            <h2>Login</h2>
+                            <p>Please log in to add, edit, or delete your products, as well as to checkout, place
+                                orders,
+                                and view your ordered products along with their PDF invoices.</p>
+
+                            <% if (errorMessage) { %>
+                                <div id="flashMessage" class="row alert alert-danger" role="alert">
+                                    <%= errorMessage %>
+                                </div>
+                                <script src="/js/hide-flash-message.js"></script>
+                                <% } %>
+
+                                    <!-- Form -->
+                                    <form class="form" method="post" action="/login">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div class="form-group">
+                                                    <label>Your Email<span>*</span></label>
+                                                    <input id="email"
+                                                        class="<%= validationErrors.find(e => e.param === 'email') ? 'invalid' : '' %>"
+                                                        type="email" name="email" placeholder=""
+                                                        value="<%= oldInput.email %>">
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="form-group">
+                                                    <label>Your Password<span>*</span></label>
+                                                    <input id="password"
+                                                        class="<%= validationErrors.find(e => e.param === 'password') ? 'invalid' : '' %>"
+                                                        type="password" name="password" placeholder=""
+                                                        value="<%= oldInput.password %>">
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="form-group login-btn">
+                                                    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                                                    <button class="btn" type="submit">Login</button>
+                                                    <a href="/signup" class="btn">Sign Up</a>
+                                                </div>
+                                                <a href="/reset" class="lost-pass">Lost your password?</a>
+                                            </div>
+                                        </div>
+                                    </form>
+                                    <!--/ End Form -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--/ End Login -->
+
+        <%- include('../includes/end.ejs') %>

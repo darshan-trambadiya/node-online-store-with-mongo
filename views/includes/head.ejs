@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Meta Tag -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Title Tag  -->
+    <title>
+        <%= pageTitle %>
+    </title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/images/favicon.png">
+    <!-- Web Font -->
+    <link
+        href="https://fonts.googleapis.com/css?family=Poppins:200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap"
+        rel="stylesheet">
+
+    <!-- StyleSheet -->
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <!-- Magnific Popup -->
+    <link rel="stylesheet" href="/css/magnific-popup.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="/css/font-awesome.css">
+    <!-- Themify Icons -->
+    <link rel="stylesheet" href="/css/themify-icons.css">
+    <!-- Nice Select CSS -->
+    <link rel="stylesheet" href="/css/niceselect.css">
+    <!-- Animate CSS -->
+    <link rel="stylesheet" href="/css/animate.css">
+    <!-- Flex Slider CSS -->
+    <link rel="stylesheet" href="/css/flex-slider.min.css">
+    <!-- Owl Carousel -->
+    <link rel="stylesheet" href="/css/owl-carousel.css">
+    <!-- Slicknav -->
+    <link rel="stylesheet" href="/css/slicknav.min.css">
+
+    <!-- Online Store (Eshop) StyleSheet -->
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/responsive.css">
+
+    <!-- Element Stylesheet -->
+    <link rel="stylesheet" href="/css/main.css">
+
+    <!-- Color CSS -->
+    <link rel="stylesheet" href="/css/color/color8.css">
+
+</head>
+
+<body class="js">
+
+    <!-- Preloader -->
+    <div class="preloader">
+        <div class="preloader-inner">
+            <div class="preloader-icon">
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </div>
+    <!-- End Preloader -->
+
+    <!-- Header -->
+    <header class="header shop">
+        <!-- Topbar -->
+        <div class="topbar">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4 col-md-12 col-12">
+                        <!-- Top Left -->
+                        <div class="top-left">
+                            <ul class="list-main">
+                                <li><i class="ti-headphone-alt"></i> <a href="tel:+918780871608">+91 87808 71608</a>
+                                </li>
+                                <li><i class="ti-email"></i> <a
+                                        href="mailto:codeptive.contactus@gmail.com">codeptive.contactus@gmail.com</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <!--/ End Top Left -->
+                    </div>
+                    <div class="col-lg-8 col-md-12 col-12">
+                        <!-- Top Right -->
+                        <div class="right-content">
+                            <ul class="list-main">
+                                <% if (!isAuthenticated) { %>
+                                    <li><i class="ti-arrow-right"></i><a href="/login">Login</a></li>
+                                    <li><i class="ti-user"></i> <a href="/signup">Sign Up</a></li>
+                                    <% } else { %>
+                                        <li>
+                                            <form action="/logout" method="post">
+                                                <i class="ti-power-off"></i>
+                                                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                                                <button class="btn-looks-like-a" type="submit">Logout</button>
+                                            </form>
+                                        </li>
+                                        <% } %>
+                            </ul>
+                        </div>
+                        <!-- End Top Right -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Topbar -->
+        <div class="middle-inner">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <!-- Logo -->
+                        <div class="logo">
+                            <a href="/"><img src="/images/logo.png" alt="logo"></a>
+                        </div>
+                        <!--/ End Logo -->
+                        <div class="mobile-nav"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Header Inner -->
+        <div class="header-inner">
+            <div class="container">
+                <div class="cat-nav-head">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="menu-area">
+                                <!-- Main Menu -->
+                                <nav class="navbar navbar-expand-lg">
+                                    <div class="navbar-collapse">
+                                        <div class="nav-inner">
+                                            <ul class="nav main-menu menu navbar-nav">
+                                                <li class="<%= path === '/' ? 'active' : '' %>">
+                                                    <a href="/">Home</a>
+                                                </li>
+                                                <li><a href="/about-us">About Us</a></li>
+                                                <li class="<%= path === '/products' ? 'active' : '' %>">
+                                                    <a href="/products">Products</a>
+                                                </li>
+                                                <% if (isAuthenticated) { %>
+                                                    <li class="<%= path === '/cart' ? 'active' : '' %>">
+                                                        <a href="/cart">Cart</a>
+                                                    </li>
+                                                    <li class="<%= path === '/orders' ? 'active' : '' %>">
+                                                        <a href="/orders">Orders</a>
+                                                    </li>
+                                                    <li class="<%= path === '/admin/add-product' ? 'active' : '' %>">
+                                                        <a href="/admin/add-product">Add Product</a>
+                                                    </li>
+                                                    <li class="<%= path === '/admin/products' ? 'active' : '' %>">
+                                                        <a href="/admin/products">Your Products</a>
+                                                    </li>
+                                                    <% } %>
+                                                        <li><a href="/contact-us">Contact Us</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </nav>
+                                <!--/ End Main Menu -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/ End Header Inner -->
+    </header>
+    <!--/ End Header -->

@@ -1,0 +1,82 @@
+<%- include('../includes/head.ejs') %>
+
+    <% if (prods.length> 0) { %>
+        <!-- Start Product Area -->
+        <div class="product-area section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="section-title">
+                            <h2>Trending Item</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="product-info">
+                            <div class="nav-main">
+                                <!-- Tab Nav -->
+                                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                    <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#products"
+                                            role="tab">Products</a></li>
+                                </ul>
+                                <!--/ End Tab Nav -->
+                            </div>
+                            <div class="tab-content" id="myTabContent">
+                                <!-- Start Single Tab -->
+                                <div class="tab-pane fade show active" id="products" role="tabpanel">
+                                    <div class="tab-single">
+                                        <div class="row justify-content-center">
+                                            <% for (let product of prods) { %>
+                                                <div class="col-xl-3 col-lg-4 col-md-4 col-12">
+                                                    <div class="single-product">
+                                                        <div class="product-img">
+                                                            <a href="/products/<%= product._id %>">
+                                                                <img class="default-img" src="<%= product.imageUrl %>"
+                                                                    alt="#" width="550" height="750">
+                                                                <img class="hover-img" src="<%= product.imageUrl %>"
+                                                                    alt="#" width="550" height="750">
+                                                                <% /* %><span class="new">New</span>
+                                                                    <% */ %>
+                                                                        <span class="price-dec">30% Off</span>
+                                                                        <% /* %><span class="out-of-stock">Hot</span>
+                                                                            <% */ %>
+                                                            </a>
+                                                            <% if (isAuthenticated) { %>
+                                                                <%- include('../includes/add-to-cart.ejs', {product:
+                                                                    product, isHoverOverButton: true}) %>
+                                                                    <% } %>
+                                                        </div>
+                                                        <div class="product-content">
+                                                            <h3><a href="/products/<%= product._id %>">
+                                                                    <%= product.title %>
+                                                                </a>
+                                                            </h3>
+                                                            <div class="product-price">
+                                                                <span>$<%= product.price %></span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <% } %>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--/ End Single Tab -->
+                            </div>
+                        </div>
+                    </div>
+                    <%- include('../includes/pagination.ejs', {currentPage: currentPage, nextPage: nextPage,
+                        previousPage: previousPage, lastPage: lastPage, hasNextPage: hasNextPage, hasPreviousPage:
+                        hasPreviousPage}) %>
+                </div>
+            </div>
+        </div>
+        <!-- End Product Area -->
+        <% } else { %>
+            <!-- Start No Products Found -->
+            <%- include('../includes/no-data-found.ejs') %>
+                <!-- End No Products Found -->
+                <% } %>
+
+                    <%- include('../includes/end.ejs') %>

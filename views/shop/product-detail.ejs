@@ -1,0 +1,60 @@
+<%- include('../includes/head.ejs') %>
+
+    <%- include('../includes/breadcrumbs.ejs', {currentPage: {title: 'Product Details' , url: '/products/' +
+        product._id} }) %>
+
+        <!-- Shop Single -->
+        <section class="shop single section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="row">
+                            <div class="col-lg-6 col-12">
+                                <!-- Product Slider -->
+                                <div class="product-gallery">
+                                    <!-- Images slider -->
+                                    <div class="flexslider-thumbnails">
+                                        <ul class="slides">
+                                            <li data-thumb="/<%= product.imageUrl %>" rel="adjustX:10, adjustY:">
+                                                <img src="/<%= product.imageUrl %>" alt="#">
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <!-- End Images slider -->
+                                </div>
+                                <!-- End Product slider -->
+                            </div>
+                            <div class="col-lg-6 col-12">
+                                <div class="product-des">
+                                    <!-- Description -->
+                                    <div class="short">
+                                        <h4>
+                                            <%= product.title %>
+                                        </h4>
+                                        <p class="price"><span class="discount">$<%= product.price %></span><s>$<%=
+                                                    product.price + Math.floor(Math.random() * (60 - 30 + 1)) + 30 %>
+                                            </s>
+                                        </p>
+                                        <p class="description">
+                                            <%= product.description %>
+                                        </p>
+                                    </div>
+                                    <!--/ End Description -->
+                                    <!-- Product Buy -->
+                                    <% if (isAuthenticated) { %>
+                                        <div class="product-buy">
+                                            <%- include('../includes/add-to-cart.ejs', {product: product}) %>
+                                        </div>
+                                        <% } %>
+                                            <p class="availability">Availability : In Stock</p>
+                                            <!--/ End Product Buy -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--/ End Shop Single -->
+
+        <%- include('../includes/end.ejs') %>

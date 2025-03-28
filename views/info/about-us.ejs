@@ -1,0 +1,382 @@
+<%- include('../includes/head.ejs') %>
+
+    <%- include('../includes/breadcrumbs.ejs', {currentPage: {title: 'About Us' , url: '/about-us' } }) %>
+
+        <!-- About Us -->
+        <section class="about-us section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-12">
+                        <div class="about-content">
+                            <h3>Welcome To <span>Online Store (Eshop)</span></h3>
+                            <p>Welcome to our online E-Shop, a seamless and secure platform built with cutting-edge
+                                technology to provide an effortless shopping experience. Our application is designed
+                                using Node.js, Express.js, and EJS template engine, ensuring fast, responsive, and
+                                secure transactions for all users.
+                            </p>
+                            <p>This project is a fully functional E-Shop built using Node.js and a suite of
+                                modern libraries and tools. It provides a seamless shopping experience with features
+                                like user authentication, product management, cart functionality, secure payments, and
+                                order
+                                tracking.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-12">
+                        <div class="about-img overlay">
+                            <img src="/images/hero-image.jpg" alt="#">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+
+                        <!-- Key Features Section -->
+                        <section class="mb-5">
+                            <h2 class="section-heading my-4">Key Features</h2>
+                            <div class="row row-gap-30">
+                                <!-- Feature Cards -->
+                                <div class="col-md-4">
+                                    <div class="card h-100 p-3">
+                                        <div class="card-body">
+                                            <i class="ti-user feature-icon"></i>
+                                            <h5 class="card-title mt-3">User Authentication</h5>
+                                            <ul class="list-group list-group-flush">
+                                                <li class="list-group-item">Users can <strong>sign up</strong> with
+                                                    email, password, and confirm password.</li>
+                                                <li class="list-group-item">Passwords are securely hashed using
+                                                    <strong>bcryptjs</strong> and stored in <strong>MongoDB.</strong>
+                                                </li>
+                                                <li class="list-group-item">Users can <strong>log in</strong> with their
+                                                    credentials</li>
+                                                <li class="list-group-item">Sessions are managed using
+                                                    <strong>express-session</strong> with
+                                                    <strong>connect-mongodb-session</strong> for session persistence.
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="card h-100 p-3">
+                                        <div class="card-body">
+                                            <i class="ti-key feature-icon"></i>
+                                            <h5 class="card-title mt-3">Password Reset</h5>
+                                            <ul class="list-group list-group-flush">
+                                                <li class="list-group-item">Users can reset their password by entering
+                                                    their email.</li>
+                                                <li class="list-group-item">Password reset link sent using
+                                                    <strong>nodemailer</strong> and <strong>Mailtrap</strong>.
+                                                </li>
+                                                <li class="list-group-item">Set a new password after clicking the reset
+                                                    link.</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="card h-100 p-3">
+                                        <div class="card-body">
+                                            <i class="ti-shopping-cart feature-icon"></i>
+                                            <h5 class="card-title mt-3">Product Management</h5>
+                                            <ul class="list-group list-group-flush">
+                                                <li class="list-group-item">Users can <strong>add,</strong>
+                                                    <strong>edit,</strong> and <strong>delete</strong> their own
+                                                    products.
+                                                </li>
+                                                <li class="list-group-item">Product images are uploaded using
+                                                    <strong>multer</strong> for <strong>file handling</strong>.
+                                                </li>
+                                                <li class="list-group-item">All users can view products listed under the
+                                                    Shop and Products menus, but only the owner can edit or delete them.
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="card h-100 p-3">
+                                        <div class="card-body">
+                                            <i class="ti-shopping-cart feature-icon"></i>
+                                            <h5 class="card-title mt-3">Shopping Cart</h5>
+                                            <ul class="list-group list-group-flush">
+                                                <li class="list-group-item">Add products to cart.</li>
+                                                <li class="list-group-item">Manage product quantities.</li>
+                                                <li class="list-group-item">Persist cart across sessions.</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="card h-100 p-3">
+                                        <div class="card-body">
+                                            <i class="ti-credit-card feature-icon"></i>
+                                            <h5 class="card-title mt-3">Checkout & Payments</h5>
+                                            <ul class="list-group list-group-flush">
+                                                <li class="list-group-item">Users can proceed to checkout and make
+                                                    payments securely using <strong>Stripe</strong>.
+                                                </li>
+                                                <li class="list-group-item">Upon successful payment, users are
+                                                    redirected to the <strong>Orders</strong> page.</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="card h-100 p-3">
+                                        <div class="card-body">
+                                            <i class="ti-file feature-icon"></i>
+                                            <h5 class="card-title mt-3">Order Management</h5>
+                                            <ul class="list-group list-group-flush">
+                                                <li class="list-group-item">Users can view their orders and download
+                                                    invoices.</li>
+                                                <li class="list-group-item">Invoices are generated as PDFs using
+                                                    <strong>pdfkit</strong>.
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="card h-100 p-3">
+                                        <div class="card-body">
+                                            <i class="ti-shield feature-icon"></i>
+                                            <h5 class="card-title mt-3">Form Validation & Security</h5>
+                                            <ul class="list-group list-group-flush">
+                                                <li class="list-group-item">All forms are validated using
+                                                    <strong>express-validator</strong>.
+                                                </li>
+                                                <li class="list-group-item">Form submissions are protected against CSRF
+                                                    attacks using <strong>csurf</strong>.
+                                                </li>
+                                                <li class="list-group-item">Error messages are displayed using
+                                                    <strong>connect-flash</strong>.
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="card h-100 p-3">
+                                        <div class="card-body">
+                                            <i class="ti-layout feature-icon"></i>
+                                            <h5 class="card-title mt-3">Frontend Design</h5>
+                                            <ul class="list-group list-group-flush">
+                                                <li class="list-group-item">The frontend is built using the <strong>EJS
+                                                        template engine</strong> for dynamic views.
+                                                </li>
+                                                <li class="list-group-item"><strong>Bootstrap</strong> is used for
+                                                    responsive and modern UI design.
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="card h-100 p-3">
+                                        <div class="card-body">
+                                            <i class="ti-settings feature-icon"></i>
+                                            <h5 class="card-title mt-3">Environment Management</h5>
+                                            <ul class="list-group list-group-flush">
+                                                <li class="list-group-item">Sensitive credentials (e.g., MongoDB URL,
+                                                    Stripe keys, Mailtrap credentials) are stored in a
+                                                    <strong>.env</strong> file and accessed using
+                                                    <strong>dotenv</strong>.
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="card h-100 p-3">
+                                        <div class="card-body">
+                                            <i class="ti-layout-grid2 feature-icon"></i>
+                                            <h5 class="card-title mt-3">Pagination</h5>
+                                            <ul class="list-group list-group-flush">
+                                                <li class="list-group-item">Products are listed with pagination for
+                                                    better user experience.
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- Technologies Section -->
+                        <section class="mb-5">
+                            <h2 class="section-heading my-4">Technologies Used</h2>
+                            <div class="row row-gap-30">
+                                <!-- Feature Cards -->
+                                <div class="col-md-4">
+                                    <div class="card h-100 p-3">
+                                        <div class="card-body">
+                                            <i class="ti-server feature-icon"></i>
+                                            <h5 class="card-title mt-3">Backend</h5>
+                                            <ul class="list-group list-group-flush">
+                                                <li class="list-group-item">Node.js</li>
+                                                <li class="list-group-item">Express.js</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="card h-100 p-3">
+                                        <div class="card-body">
+                                            <i class="ti-layout feature-icon"></i>
+                                            <h5 class="card-title mt-3">Frontend</h5>
+                                            <ul class="list-group list-group-flush">
+                                                <li class="list-group-item">EJS (Embedded JavaScript templates)</li>
+                                                <li class="list-group-item">Bootstrap</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="card h-100 p-3">
+                                        <div class="card-body">
+                                            <i class="ti-key feature-icon"></i>
+                                            <h5 class="card-title mt-3">Authentication</h5>
+                                            <ul class="list-group list-group-flush">
+                                                <li class="list-group-item">bcryptjs</li>
+                                                <li class="list-group-item">express-session</li>
+                                                <li class="list-group-item">connect-mongodb-session</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="card h-100 p-3">
+                                        <div class="card-body">
+                                            <i class="ti-upload feature-icon"></i>
+                                            <h5 class="card-title mt-3">File Upload</h5>
+                                            <ul class="list-group list-group-flush">
+                                                <li class="list-group-item">multer</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="card h-100 p-3">
+                                        <div class="card-body">
+                                            <i class="ti-email feature-icon"></i>
+                                            <h5 class="card-title mt-3">Email Service</h5>
+                                            <ul class="list-group list-group-flush">
+                                                <li class="list-group-item">nodemailer (with Mailtrap for testing)</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="card h-100 p-3">
+                                        <div class="card-body">
+                                            <i class="ti-money feature-icon"></i>
+                                            <h5 class="card-title mt-3">Payments</h5>
+                                            <ul class="list-group list-group-flush">
+                                                <li class="list-group-item">Stripe</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="card h-100 p-3">
+                                        <div class="card-body">
+                                            <i class="ti-file feature-icon"></i>
+                                            <h5 class="card-title mt-3">PDF Generation</h5>
+                                            <ul class="list-group list-group-flush">
+                                                <li class="list-group-item">pdfkit</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="card h-100 p-3">
+                                        <div class="card-body">
+                                            <i class="ti-check-box feature-icon"></i>
+                                            <h5 class="card-title mt-3">Form Validation</h5>
+                                            <ul class="list-group list-group-flush">
+                                                <li class="list-group-item">express-validator</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="card h-100 p-3">
+                                        <div class="card-body">
+                                            <i class="ti-shield feature-icon"></i>
+                                            <h5 class="card-title mt-3">Security</h5>
+                                            <ul class="list-group list-group-flush">
+                                                <li class="list-group-item">csurf (CSRF protection)</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="card h-100 p-3">
+                                        <div class="card-body">
+                                            <i class="ti-server feature-icon"></i>
+                                            <h5 class="card-title mt-3">Database</h5>
+                                            <ul class="list-group list-group-flush">
+                                                <li class="list-group-item">MongoDB (with Mongoose for ODM)</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="card h-100 p-3">
+                                        <div class="card-body">
+                                            <i class="ti-settings feature-icon"></i>
+                                            <h5 class="card-title mt-3">Environment Management</h5>
+                                            <ul class="list-group list-group-flush">
+                                                <li class="list-group-item">dotenv</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- Why This Project? Section -->
+                        <section class="mb-5">
+                            <h2 class="section-heading my-4">Why This Project?</h2>
+                            <p class="">This project demonstrates a strong understanding of <strong>full-stack
+                                    development</strong> with Node.js, including:</p>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item"><strong>User authentication and session management.</strong>
+                                </li>
+                                <li class="list-group-item"><strong>Database integration</strong> with MongoDB.</li>
+                                <li class="list-group-item"><strong>File handling</strong> and <strong>image
+                                        uploads</strong>.</li>
+                                <li class="list-group-item"><strong>Secure payment integration</strong> with Stripe.
+                                </li>
+                                <li class="list-group-item"><strong>PDF generation</strong> for invoices.</li>
+                                <li class="list-group-item"><strong>Form validation</strong> and <strong>error
+                                        handling</strong>.</li>
+                                <li class="list-group-item"><strong>Environment management</strong> for secure
+                                    credential storage.</li>
+                                <li class="list-group-item"><strong>Responsive and animated frontend</strong> using
+                                    Bootstrap and Animate.css.</li>
+                            </ul>
+                            <p>It is a complete e-commerce solution that showcases skills in building scalable, secure,
+                                and user-friendly web applications.</p>
+                        </section>
+
+                        <!-- How to Use Section -->
+                        <section class="mb-5">
+                            <h2 class="section-heading my-4">How to Use</h2>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">Clone the repository.</li>
+                                <li class="list-group-item">Install dependencies using <code>npm install</code>.</li>
+                                <li class="list-group-item">Set up your <code>.env</code> file with required
+                                    credentials.</li>
+                                <li class="list-group-item">Run the application using <code>npm start</code>.</li>
+                                <li class="list-group-item">Access the app in your browser and explore the features.
+                                </li>
+                            </ul>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- End About Us -->
+
+        <%- include('../includes/end.ejs') %>

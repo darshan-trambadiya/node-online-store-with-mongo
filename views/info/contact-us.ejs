@@ -1,0 +1,112 @@
+<%- include('../includes/head.ejs') %>
+
+    <%- include('../includes/breadcrumbs.ejs', {currentPage: {title: 'Contact Us' , url: '/contact-us' } }) %>
+
+        <!-- Start Contact -->
+        <section id="contact-us" class="contact-us section">
+            <div class="container">
+                <div class="contact-head">
+                    <div class="row">
+                        <% if (successMessage) { %>
+                            <div id="flashMessage" class="col-12 alert alert-success" role="alert">
+                                Thank you for reaching out! Your message has been successfully sent. We will get back to
+                                you as soon as possible.
+                            </div>
+                            <script src="/js/hide-flash-message.js"></script>
+                            <% } %>
+                                <div class="col-lg-8 col-12">
+                                    <div class="form-main">
+                                        <div class="title">
+                                            <h4>Get in touch</h4>
+                                            <h3>Write us a message</h3>
+                                        </div>
+                                        <form class="form" method="post" action="/send-contact-us-message">
+                                            <div class="row">
+                                                <div class="col-lg-6 col-12">
+                                                    <div class="form-group">
+                                                        <label>Your Name<span>*</span></label>
+                                                        <input name="name" type="text" placeholder=""
+                                                            value="<%= oldInput.name %>">
+                                                        <span class="mt-1 form-err">
+                                                            <%= validationErrors.find(e=> e.path === 'name') ?
+                                                                validationErrors.find(e => e.path === 'name').msg : ''
+                                                                %>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6 col-12">
+                                                    <div class="form-group">
+                                                        <label>Your Subjects</label>
+                                                        <input name="subject" type="text" placeholder=""
+                                                            value="<%= oldInput.subject %>">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6 col-12">
+                                                    <div class="form-group">
+                                                        <label>Your Email<span>*</span></label>
+                                                        <input name="email" type="email" placeholder=""
+                                                            value="<%= oldInput.email %>">
+                                                        <span class="mt-1 form-err">
+                                                            <%= validationErrors.find(e=> e.path === 'email') ?
+                                                                validationErrors.find(e => e.path === 'email').msg : ''
+                                                                %>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-6 col-12">
+                                                    <div class="form-group">
+                                                        <label>Your Phone</label>
+                                                        <input name="phone" type="text" placeholder=""
+                                                            value="<%= oldInput.phone %>">
+                                                    </div>
+                                                </div>
+                                                <div class="col-12">
+                                                    <div class="form-group message">
+                                                        <label>Your message<span>*</span></label>
+                                                        <textarea name="message"
+                                                            placeholder=""><%= oldInput.message %></textarea>
+                                                        <span class="mt-1 form-err">
+                                                            <%= validationErrors.find(e=> e.path === 'message') ?
+                                                                validationErrors.find(e => e.path === 'message').msg :
+                                                                ''
+                                                                %>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12">
+                                                    <div class="form-group button">
+                                                        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                                                        <button type="submit" class="btn">Send Message</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-12">
+                                    <div class="single-head">
+                                        <div class="single-info">
+                                            <i class="fa fa-phone"></i>
+                                            <h4 class="title">Call us Now:</h4>
+                                            <ul>
+                                                <li><a href="tel:+918780871608">+91 87808 71608</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="single-info">
+                                            <i class="fa fa-envelope-open"></i>
+                                            <h4 class="title">Email:</h4>
+                                            <ul>
+                                                <li><a
+                                                        href="mailto:codeptive.contactus@gmail.com">codeptive.contactus@gmail.com</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--/ End Contact -->
+
+        <%- include('../includes/end.ejs') %>

@@ -1,0 +1,63 @@
+<%- include('../includes/head.ejs') %>
+
+    <%- include('../includes/breadcrumbs.ejs', {currentPage: {title: 'Your Products' , url: '/admin/products' } }) %>
+
+        <% if (prods.length> 0) { %>
+            <!-- Products -->
+            <section class="product-area shop-sidebar shop-list shop section">
+                <div class="container">
+                    <div class="row">
+                        <!-- Start Single List -->
+                        <% for (let product of prods) { %>
+                            <div class="col-12 product-single-item">
+                                <div class="row">
+                                    <div class="col-lg-4 col-md-6 col-sm-6">
+                                        <div class="single-product">
+                                            <div class="product-img">
+                                                <a href="/products/<%= product._id %>">
+                                                    <img class="default-img" src="/<%= product.imageUrl %>" alt="#"
+                                                        width="550" height="750">
+                                                    <span class="price-dec">30% Off</span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-8 col-md-6 col-12">
+                                        <div class="list-content">
+                                            <div class="product-content">
+                                                <h3 class="title">
+                                                    <a href="/products/<%= product._id %>">
+                                                        <%= product.title %>
+                                                    </a>
+                                                </h3>
+                                                <div class="product-price mt-2">
+                                                    <span>$<%= product.price %></span>
+                                                </div>
+                                            </div>
+                                            <p class="des">
+                                                <%= product.description %>
+                                            </p>
+                                            <div class="">
+                                                <a href="/admin/edit-product/<%= product._id %>?edit=true"
+                                                    class="btn">Edit</a>
+                                                <input type="hidden" value="<%= product._id %>" name="productId">
+                                                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                                                <button class="btn ml-3 btn-red" type="button"
+                                                    onclick="deleteProduct(this)">Delete</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <% } %>
+                                <!-- End Single List -->
+                    </div>
+                </div>
+            </section>
+            <!--/ End Products  -->
+            <% } else { %>
+                <%- include('../includes/no-data-found.ejs', {viewPage: 'yourProducts' }) %>
+                    <% } %>
+                        <%- include('../includes/end.ejs') %>
+
+                            <script src="/js/main.js"></script>

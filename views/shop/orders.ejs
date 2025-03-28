@@ -1,0 +1,38 @@
+<%- include('../includes/head.ejs') %>
+
+    <%- include('../includes/breadcrumbs.ejs', {currentPage: {title: 'Your Orders' , url: '/orders' } }) %>
+
+        <% if (orders.length> 0) { %>
+            <!-- Products -->
+            <section class="product-area shop-sidebar shop-list shop section">
+                <div class="container">
+                    <div class="row">
+                        <!-- Start Single List -->
+                        <% orders.forEach(order=> { %>
+                            <div class="col-12 orderd-item">
+                                <div class="list-content">
+                                    <div class="product-content mb-3">
+                                        <h5 class="title">
+                                            Order - # <%= order._id %>
+                                        </h5>
+                                    </div>
+                                    <% order.products.forEach(p=> { %>
+                                        <p class="des">
+                                            <%= p.product.title %> - <%= p.quantity %>
+                                        </p>
+                                        <% }); %>
+                                            <div class="">
+                                                <a href="/orders/<%= order._id %>" class="btn">Get Invoice</a>
+                                            </div>
+                                </div>
+                            </div>
+                            <% }); %>
+                                <!-- End Single List -->
+                    </div>
+                </div>
+            </section>
+            <!--/ End Products  -->
+            <% } else { %>
+                <%- include('../includes/no-data-found.ejs', {viewPage: 'orders' }) %>
+                    <% } %>
+                        <%- include('../includes/end.ejs') %>

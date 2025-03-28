@@ -1,0 +1,156 @@
+<%- include('../includes/head.ejs') %>
+
+    <!-- Slider Area -->
+    <section class="hero-slider">
+        <!-- Single Slider -->
+        <div class="single-slider">
+            <div class="container z-2 h-100">
+            </div>
+        </div>
+        <!--/ End Single Slider -->
+    </section>
+    <!--/ End Slider Area -->
+    <% if (prods.length> 0) { %>
+        <!-- Start Product Area -->
+        <div class="product-area section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="section-title">
+                            <h2>Trending Item</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="product-info">
+                            <div class="nav-main">
+                                <!-- Tab Nav -->
+                                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                    <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#products"
+                                            role="tab">Products</a></li>
+                                </ul>
+                                <!--/ End Tab Nav -->
+                            </div>
+                            <div class="tab-content" id="myTabContent">
+                                <!-- Start Single Tab -->
+                                <div class="tab-pane fade show active" id="products" role="tabpanel">
+                                    <div class="tab-single">
+                                        <div class="row justify-content-center">
+                                            <% for (let product of prods) { %>
+                                                <div class="col-xl-3 col-lg-4 col-md-4 col-12">
+                                                    <div class="single-product">
+                                                        <div class="product-img">
+                                                            <a href="/products/<%= product._id %>">
+                                                                <img class="default-img" src="<%= product.imageUrl %>"
+                                                                    alt="#" width="550" height="750">
+                                                                <img class="hover-img" src="<%= product.imageUrl %>"
+                                                                    alt="#" width="550" height="750">
+                                                                <% /* %><span class="new">New</span>
+                                                                    <% */ %>
+                                                                        <span class="price-dec">30% Off</span>
+                                                                        <% /* %><span class="out-of-stock">Hot</span>
+                                                                            <% */ %>
+                                                            </a>
+                                                            <% if (isAuthenticated) { %>
+                                                                <%- include('../includes/add-to-cart.ejs', {product:
+                                                                    product, isHoverOverButton: true}) %>
+                                                                    <% } %>
+                                                        </div>
+                                                        <div class="product-content">
+                                                            <h3><a href="/products/<%= product._id %>">
+                                                                    <%= product.title %>
+                                                                </a>
+                                                            </h3>
+                                                            <div class="product-price">
+                                                                <span>$<%= product.price %></span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <% } %>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--/ End Single Tab -->
+                            </div>
+                        </div>
+                    </div>
+                    <%- include('../includes/pagination.ejs', {currentPage: currentPage, nextPage: nextPage,
+                        previousPage: previousPage, lastPage: lastPage, hasNextPage: hasNextPage, hasPreviousPage:
+                        hasPreviousPage}) %>
+                </div>
+            </div>
+        </div>
+        <!-- End Product Area -->
+        <% } else { %>
+            <%- include('../includes/no-data-found.ejs') %>
+                <% } %>
+
+                    <!-- Start Shop Services Area -->
+                    <section class="shop-services section home">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-3 col-md-6 col-12">
+                                    <!-- Start Single Service -->
+                                    <div class="single-service">
+                                        <i class="ti-rocket"></i>
+                                        <h4>Free shiping</h4>
+                                        <p>Orders over $100</p>
+                                    </div>
+                                    <!-- End Single Service -->
+                                </div>
+                                <div class="col-lg-3 col-md-6 col-12">
+                                    <!-- Start Single Service -->
+                                    <div class="single-service">
+                                        <i class="ti-reload"></i>
+                                        <h4>Free Return</h4>
+                                        <p>Within 30 days returns</p>
+                                    </div>
+                                    <!-- End Single Service -->
+                                </div>
+                                <div class="col-lg-3 col-md-6 col-12">
+                                    <!-- Start Single Service -->
+                                    <div class="single-service">
+                                        <i class="ti-lock"></i>
+                                        <h4>Sucure Payment</h4>
+                                        <p>100% secure payment</p>
+                                    </div>
+                                    <!-- End Single Service -->
+                                </div>
+                                <div class="col-lg-3 col-md-6 col-12">
+                                    <!-- Start Single Service -->
+                                    <div class="single-service">
+                                        <i class="ti-tag"></i>
+                                        <h4>Best Peice</h4>
+                                        <p>Guaranteed price</p>
+                                    </div>
+                                    <!-- End Single Service -->
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <!-- End Shop Services Area -->
+
+                    <!-- Start Shop Newsletter  -->
+                    <section class="shop-newsletter section">
+                        <div class="container">
+                            <div class="inner-top">
+                                <div class="row">
+                                    <div class="col-lg-8 offset-lg-2 col-12">
+                                        <!-- Start Newsletter Inner -->
+                                        <div class="inner">
+                                            <h4>Newsletter</h4>
+                                            <p> Subscribe to our newsletter and get <span>10%</span> off your first
+                                                purchase</p>
+                                            <p> This feature is coming soon!</p>
+                                        </div>
+                                        <!-- End Newsletter Inner -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <!-- End Shop Newsletter -->
+
+                    <%- include('../includes/end.ejs') %>

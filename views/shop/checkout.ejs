@@ -1,0 +1,77 @@
+<%- include('../includes/head.ejs') %>
+
+    <%- include('../includes/breadcrumbs.ejs', {currentPage: {title: 'Checkout' , url: '/checkout' } }) %>
+
+        <!-- Start Checkout -->
+        <section class="shop checkout section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-12">
+                        <div class="checkout-form">
+                            <h2>Your Order</h2>
+                            <ul>
+                                <% products.forEach(p=> { %>
+                                    <p>
+                                        <%= p.productId.title %> (Quantity: <%= p.quantity %>)
+                                    </p>
+                                    <% }) %>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-12">
+                        <div class="order-details">
+                            <!-- Order Widget -->
+                            <div class="single-widget">
+                                <h2>CART TOTALS</h2>
+                                <div class="content">
+                                    <ul>
+                                        <li>Sub Total<span>$<%= totalSum %></span></li>
+                                        <li>(+) Shipping<span>Free</span></li>
+                                        <li class="last">Total<span>$<%= totalSum %></span></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!--/ End Order Widget -->
+                            <!-- Order Widget -->
+                            <div class="single-widget">
+                                <h2>Payments</h2>
+                                <div class="content">
+                                    <p class="payments-mode">We accept only online payment methods.</p>
+                                </div>
+                            </div>
+                            <!--/ End Order Widget -->
+                            <!-- Payment Method Widget -->
+                            <div class="single-widget payement">
+                                <div class="content">
+                                    <img src="/images/payment-method.png" alt="#">
+                                </div>
+                            </div>
+                            <!--/ End Payment Method Widget -->
+                            <!-- Button Widget -->
+                            <div class="single-widget get-button">
+                                <div class="content">
+                                    <div class="button">
+                                        <a id="checkout-btn" href="javascript:void(0)" class="btn">proceed to
+                                            checkout</a>
+                                        <script src="https://js.stripe.com/v3/"></script>
+                                        <script>
+                                            var stripe = Stripe('<%= stripePublicKey %>');
+                                            var orderBtn = document.getElementById('checkout-btn');
+                                            orderBtn.addEventListener('click', function () {
+                                                stripe.redirectToCheckout({
+                                                    sessionId: '<%= sessionId %>'
+                                                });
+                                            });
+                                        </script>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--/ End Button Widget -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--/ End Checkout -->
+
+        <%- include('../includes/end.ejs') %>

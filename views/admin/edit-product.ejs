@@ -1,0 +1,85 @@
+<%- include('../includes/head.ejs') %>
+
+    <%- include('../includes/breadcrumbs.ejs', {currentPage: {title: editing ? 'Edit Product' : 'Add Product' , url:
+        editing ? '/admin/edit-product/' + product.id + '?edit=true' : '/admin/add-product' } }) %>
+
+        <!-- Shop Login -->
+        <section class="shop login section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 offset-lg-3 col-12">
+                        <div class="login-form">
+                            <h2>
+                                <%= editing ? "Edit Product" : "Add Product" %>
+                            </h2>
+
+                            <% if (errorMessage) { %>
+                                <div id="flashMessage" class="row alert alert-danger" role="alert">
+                                    <%= errorMessage %>
+                                </div>
+                                <script src="/js/hide-flash-message.js"></script>
+                                <% } %>
+
+                                    <!-- Form -->
+                                    <form class="form" method="post"
+                                        action="/admin/<% if (editing) { %>edit-product<% } else { %>add-product<% } %>"
+                                        enctype="multipart/form-data">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div class="form-group">
+                                                    <label>Product Title<span>*</span></label>
+                                                    <input id="title"
+                                                        class="<%= validationErrors.find(e => e.param === 'title') ? 'invalid' : '' %>"
+                                                        type="text" name="title" placeholder=""
+                                                        value="<% if (editing || hasError) { %><%= product.title %><% } %>">
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="form-group">
+                                                    <label>Product Image<span>*</span></label>
+                                                    <input id="image" type="file" name="image" class="file-input">
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="form-group">
+                                                    <label>Product Price<span>*</span></label>
+                                                    <input id="price"
+                                                        class="<%= validationErrors.find(e => e.param === 'price') ? 'invalid' : '' %>"
+                                                        type="number" name="price" step="0.01"
+                                                        value="<% if (editing || hasError) { %><%= product.price %><% } %>">
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="form-group">
+                                                    <label>Product Description<span>*</span></label>
+                                                    <textarea name="description" id="description"
+                                                        class="textarea-description <%= validationErrors.find(e => e.param === 'description') ? 'invalid' : '' %>"
+                                                        rows="5"><% if (editing || hasError) { %><%= product.description %><% } %></textarea>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="form-group login-btn">
+                                                    <% if (editing) { %>
+                                                        <input type="hidden" value="<%= product._id %>"
+                                                            name="productId">
+                                                        <% } %>
+
+                                                            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                                                            <button class="btn" type="submit">
+                                                                <% if (editing) { %>Update Product<% } else { %>Add
+                                                                        Product
+                                                                        <% } %>
+                                                            </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                    <!--/ End Form -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--/ End Login -->
+
+        <%- include('../includes/end.ejs') %>

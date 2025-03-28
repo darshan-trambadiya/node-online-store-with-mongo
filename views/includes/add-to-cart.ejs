@@ -1,0 +1,18 @@
+<% var hoverButton=(typeof isHoverOverButton !=="undefined" ) ? isHoverOverButton : false; %>
+
+    <form action="/cart" method="post">
+        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+        <input type="hidden" name="productId" value="<%= product._id %>">
+
+        <% if (hoverButton) { %>
+            <div class="button-head">
+                <div class="product-action-2">
+                    <button class="btn-looks-like-a" type="submit">Add to cart</button>
+                </div>
+            </div>
+            <% } else { %>
+                <div class="add-to-cart">
+                    <button class="btn" type="submit">Add to cart</button>
+                </div>
+                <% } %>
+    </form>

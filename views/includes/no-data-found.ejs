@@ -1,0 +1,35 @@
+<% var page=(typeof viewPage !=="undefined" ) ? viewPage : '' ; %>
+
+    <!-- Start No Products Found -->
+    <section class="section">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section-title">
+                        <h2>
+                            <% if (page==='cart' ) { %>
+                                No products found in your cart!
+                                <% } else if (page==='orders' ) { %>
+                                    You haven't placed any orders yet.
+                                    <% } else { %>
+                                        No products found!
+                                        <% } %>
+                        </h2>
+                        <p>
+                            <% if (page==='cart' ) { %>
+                                Please add products to your cart before proceeding to checkout.
+                                <% } else if (page==='orders' ) { %>
+                                    Please place an order first to view your orders.
+                                    <% } else if (page==='yourProducts' ) { %>
+                                        Kindly add some products to access this view.
+                                        <% } else { %>
+                                            First, kindly register yourself and add some products to explore the website
+                                            experience!
+                                            <% } %>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End No Products Found -->

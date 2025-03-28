@@ -1,0 +1,8 @@
+<%- include('includes/head.ejs') %>
+
+    <%= include('includes/error.ejs', { errorCode: '404' , errorMessage: 'This page cannot be found' ,
+        errorDescription: 'Oops! The page you are looking for does not exist. It might have been moved or deleted.' })
+        %>
+
+
+        <%- include('includes/end.ejs') %>
